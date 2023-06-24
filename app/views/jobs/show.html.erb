@@ -1,0 +1,91 @@
+<p></p>
+<div class="d-flex" style="margin: 0 0 1% 2%;">
+    <!-------------------- Show Edit/Delete Job ----------------------->
+    <% if current_user || @job.published == false %>
+      <%= back_to_jobs_button("small") %>
+
+      <%= link_to "Edit", edit_job_path(@job), class: "btn btn-dark btn-sm ms-1"%>
+      <%= button_to "Destroy", @job, method: :delete , class: "btn btn-dark btn-sm ms-1"%>
+    <% else %>
+      <%= back_to_jobs_button %>
+    <% end %>
+</div>
+
+<!---------------------------------------------------- Card -------------------------------------------------->
+<div class="card show">
+  <div class="card-body">
+  <!------------------------------------ Publication Success Notification ------------------------------------>
+    <% if params["success"] == 'true' %>
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Successful posting!</h4>
+        Your job has been posted successfully. It will now appear on our job board for 8 weeks.
+        <br> Thank you for using our job posting service
+        <br> <a href="/jobs">Go to Job Board</a>
+      </div>
+    <% end %>
+
+  <!------------------------------------ Payment Requeriment Notification ------------------------------------>
+
+    <% if @job.published == false %>
+      <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Hi there!</h4>
+        This <strong>job has not been published yet</strong>. You can post it for <strong>5 USD</strong> using BTC or Lightning with the following link.
+        <br>
+        Remember that you can  <%= link_to "edit this job", edit_job_path(@job) %>  before publishing it.
+        <hr>
+        <!---------------------------------------- Publish Form ---------------------------------------------->
+        <%= form_tag invoices_create_path, method: :post do %>
+          <div class="mx-auto w-85 text-center">
+            <%= label_tag :email, "Invoice Email *", class: "d-block tittle-position fuente-letras" %>
+            <%= text_field_tag :email, nil, class: "form-control rounded border-dark" , required: true %>
+          </div>
+
+          <%= hidden_field_tag :job_id, @job.id %>
+          <%= hidden_field_tag :company, @job.company %>
+
+          <div class="row">
+              <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+                <%= submit_tag "Publish Job", data: {turbo: "false"}, class: "btn btn-primary apply-buttom" %>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+      <!------------------------------------------------ Card Preview ----------------------------------------->
+      <h6 style="text-align: center;"> Board preview</h6>
+      <%=job_card(@job, true)%>
+      <br>
+
+      <h6 style="text-align: center;"> Description preview </h5>
+    <% end %>
+
+  <!------------------------------------ Job Description ------------------------------------------------------>
+  <div class="show-description">
+    <h2 class="card-title"><%= @job.title %></h2>
+      <p class="card-text" style="line-height: 1;">
+        <small class="text-body-secondary"> <%= @job.company%> - <%= @job.location %> - <%= @job.location_mode %> </small>
+      </p>
+      <span class="card-text" style="float: left; ">
+        <small class="text-body-secondary"><%= @job.created_at %></small>
+      </span>
+      <span class="card-text" style="float: right;">
+        <small class="text-body-secondary"> $<%= @job.salary ? @job.salary : "------" %></small>
+      </span>
+    <br><br><br>
+    <h5 class="card-title"> Job Description</h5>
+    <p class="card-text", style="white-space: pre-wrap;"> <%= @job.description %></p>
+    <br><br>
+    </div>
+  </div>
+</div>
+
+
+<!------------------------------------------ Apply Buttom ------------------------------------------------------->
+
+<div class="container-fluid fixed-bottom white">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+      <a href="<%=@job.website%>" target="_blank" class="btn btn-primary apply-buttom">Apply</a>
+    </div>
+  </div>
+</div>

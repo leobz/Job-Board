@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  job_id: 1
+  status: MyString
+  amount: 9.99
+  fiat_value: 9.99
+  description: MyString
+  currency: MyString
+  customer_email: MyString
+  notif_email: MyString
+  callback_url: MyString
+  success_url: MyString
+  auto_settle: false
+  ttl: 1
+
+two:
+  id: MyString
+  job_id: 1
+  status: MyString
+  amount: 9.99
+  fiat_value: 9.99
+  description: MyString
+  currency: MyString
+  customer_email: MyString
+  notif_email: MyString
+  callback_url: MyString
+  success_url: MyString
+  auto_settle: false
+  ttl: 1

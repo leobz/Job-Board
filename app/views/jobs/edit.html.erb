@@ -1,0 +1,19 @@
+<p></p>
+<div class="d-flex" style="margin: 0 0 0 2%;">
+  <%= link_to "Show this job", @job, class: "btn btn-dark btn-sm me-1"%>
+  <%= back_to_jobs_button("small") %>
+</div>
+
+<!------------------------------------ Card  --------------------------------------->
+<div class="card">
+  <div class="row g-0 align-items-center">
+    <!--------------------------  Body  -------------------------->
+      <div class="card-body">
+        <!-------------- Title  ---------------->
+        <h2 class="card-title">Edit job</h2>
+        <!-------------- Form  ---------------->
+        <%= render "form", job: @job, edit: true %>
+
+      </div>
+  </div>
+</div>

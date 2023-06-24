@@ -1,0 +1,10 @@
+<br>
+
+<div id="jobs">
+  <% @jobs.each do |job| %>
+    <a href=<%=job_path(job)%> class="card-link">
+      <%=job_card(job, "true")%>
+    </a>
+  <% end %>
+</div>
+

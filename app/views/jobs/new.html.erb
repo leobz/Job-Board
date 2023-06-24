@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<%= back_to_jobs_button %>
+
+<!------------------------------------ Card  --------------------------------------->
+<div class="card">
+  <div class="row g-0 align-items-center">
+    <!--------------------------  Body  -------------------------->
+      <div class="card-body">
+        <!-------------- Title  ---------------->
+        <h2 class="card-title">New job</h2>
+        <!-------------- Form  ---------------->
+        <%= render "form", job: @job, edit: false %>
+
+      </div>
+  </div>
+</div>
+

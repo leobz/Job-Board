@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  company_name: MyString
+  location: MyString
+  currently_working: false
+  star_date: 2023-03-23
+  end_date: 2023-03-23
+  industry: 1
+  description: MyText
+  media_links: MyString
+
+two:
+  title: MyString
+  company_name: MyString
+  location: MyString
+  currently_working: false
+  star_date: 2023-03-23
+  end_date: 2023-03-23
+  industry: 1
+  description: MyText
+  media_links: MyString

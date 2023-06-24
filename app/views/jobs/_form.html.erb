@@ -1,0 +1,74 @@
+<%= form_with(model: job) do |form| %>
+  <% if job.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+      <ul>
+        <% job.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :company_name, class: "d-block tittle-position fuente-letras";%>
+    <%= form.text_field :company, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div>
+    <%= form.label :company_logo, class: "d.d-block tittle-position fuente-letras" %>
+    <%= form.file_field :company_logo, class: "fuente-letras" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :location, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :location, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :location_mode, class: "d-block tittle-position fuente-letras" %>
+    <%= form.select :location_mode, Job.location_modes.keys, {}, { class: "form-control rounden w-100 border-dark text-center" } %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :estimate_salary, class: "d-block tittle-position fuente-letras" %>
+    <%= form.number_field :salary, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :title, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :title, class: "form-control rounded border-dark" %>
+  </div>
+
+  <div>
+    <%= form.label :description, class:"d-block fuente-letras" %>
+    <%= form.text_area :description, class: "field field-big" %>
+  </div>
+
+  <div class="mx-auto w-85 text-center">
+    <%= form.label :job_website, class: "d-block tittle-position fuente-letras" %>
+    <%= form.text_field :website, class: "form-control rounded border-dark" %>
+  </div>
+  <p><small>
+    Applicants will be sent to the website you specify to apply for the position.
+  </small></p>
+
+<!----------------------------------------- Form submit buttom ------------------------------------------->
+  <div class="container-fluid.fixed-bottom white">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center align-items-center" style="height: 10vh;">
+        <%=
+          if edit == true
+            form.submit "Update", class: "btn btn-primary apply-buttom"
+          else
+            form.submit "Continue" , class: "btn btn-primary apply-buttom"
+          end
+        %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+  
+
